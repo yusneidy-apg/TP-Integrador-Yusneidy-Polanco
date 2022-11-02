@@ -1,0 +1,6 @@
+INFO    2022-10-31 23:33:20,037 [main] Main  - Tienes un turno
+INFO    2022-10-31 23:35:00,085 [main] Main  - Tienes un turno
+ERROR   2022-10-31 23:35:00,088 [main] Main  - ERROR
+INFO    2022-10-31 23:37:03,940 [main] Main  - Tienes un turno
+ERROR   2022-10-31 23:37:03,944 [main] Main  - ERROR
+ERROR   2022-10-31 23:40:08,472 [main] Main  - No se puede dividir por 0
