@@ -14,8 +14,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, String nombre, String apellido, String domicilio, String dni, LocalDateTime fechaAlta) {
-        this.idPaciente = idPaciente;
+    public Paciente(String nombre, String apellido, String domicilio, String dni, LocalDateTime fechaAlta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.domicilio = domicilio;
