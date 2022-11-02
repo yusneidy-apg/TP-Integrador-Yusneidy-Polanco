@@ -31,8 +31,8 @@ public class TurnoDaoImpH2 implements ITurnoDao {
                 "(idOdontologo,idPaciente,fechaTurno) " +
                 "VALUES(?, ?, ?)");
 
-        queryInsert.setString(1, turno.getIdOdontologo());
-        queryInsert.setString(2, turno.getIdPaciente());
+        queryInsert.setInt(1, turno.getIdOdontologo());
+        queryInsert.setInt(2, turno.getIdPaciente());
         queryInsert.setTimestamp(3, Timestamp.valueOf(turno.getFechaTurno()));
 
         queryInsert.execute();

@@ -2,3 +2,20 @@ ERROR   2022-11-02 00:04:15,592 [main] Main  - Tabla "PACIENTE" ya existe
 Table "PACIENTE" already exists; SQL statement:
 create table paciente (idPaciente int auto_increment primary key,nombre varchar(255),apellido varchar(255),domicilio varchar(255),dni varchar(25),fechaAlta DATE) [42101-214]
 INFO    2022-11-02 00:04:56,386 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:30:40,623 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:32:03,735 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:33:00,641 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:36:28,436 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+ERROR   2022-11-02 14:36:28,561 [main] Main  - Error de Sintaxis en sentencia SQL "create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255),[*]"; se esperaba "identifier"
+Syntax error in SQL statement "create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255),[*]"; expected "identifier"; SQL statement:
+create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255), [42001-214]
+INFO    2022-11-02 14:36:59,941 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+ERROR   2022-11-02 14:37:01,219 [main] Main  - Error de Sintaxis en sentencia SQL "create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255))[*],"
+Syntax error in SQL statement "create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255))[*],"; SQL statement:
+create table if not exists odontologo (idOdontologo int auto_increment primary key,nombre varchar(255),apellido varchar(255),matricula varchar(255)), [42000-214]
+INFO    2022-11-02 14:37:42,971 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:37:42,978 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
+INFO    2022-11-02 14:37:42,979 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
+INFO    2022-11-02 14:39:24,805 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 14:39:24,812 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
+INFO    2022-11-02 14:39:24,813 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!

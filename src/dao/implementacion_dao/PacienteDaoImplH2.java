@@ -45,7 +45,6 @@ public class PacienteDaoImplH2 implements IPacienteDao {
         queryInsert.execute();
         LOGGER.info("¡Paciente creado con exito!");
         queryInsert.close();
-        getConexcion().close();
 
         return null;
     }

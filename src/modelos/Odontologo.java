@@ -10,8 +10,7 @@ public class Odontologo {
     public Odontologo() {
     }
 
-    public Odontologo(int idOdontologo, String nombre, String apellido, String matricula) {
-        this.idOdontologo = idOdontologo;
+    public Odontologo(String nombre, String apellido, String matricula) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;

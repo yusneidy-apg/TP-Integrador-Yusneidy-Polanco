@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import utilidad.ConexionBaseDeDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OdontologoDaoImpH2 implements IOdontologoDao {
@@ -16,7 +17,7 @@ public class OdontologoDaoImpH2 implements IOdontologoDao {
             "(idOdontologo int auto_increment primary key," +
             "nombre varchar(255)," +
             "apellido varchar(255),"+
-            "matricula varchar(255),";
+            "matricula varchar(255))";
 
     public Connection getConexcion() throws SQLException, ClassNotFoundException {
         return ConexionBaseDeDatos.obtenerConexion();
@@ -41,14 +42,30 @@ public class OdontologoDaoImpH2 implements IOdontologoDao {
         queryInsert.execute();
         LOGGER.info("¡Odontologo creado con exito!");
         queryInsert.close();
-        getConexcion().close();
 
         return null;
     }
 
     @Override
     public List<Odontologo> listar() {
-        return null;
+        List<Odontologo> odontologos = new ArrayList<>();
+
+        try(Statement stmt = getConexcion().createStatement()){
+            ResultSet rs = stmt.executeQuery("SELECT * FROM odontologo");
+            while (rs.next()){
+                Odontologo o = new Odontologo();
+                o.setIdOdontologo(rs.getInt(1));
+                o.setNombre(rs.getString(2));
+                o.setApellido(rs.getString(3));
+                o.setMatricula(rs.getString(4));
+                odontologos.add(o);
+            }
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return odontologos;
     }
 
     @Override
@@ -61,3 +78,11 @@ public class OdontologoDaoImpH2 implements IOdontologoDao {
 
     }
 }
+
+
+
+
+
+
+
+
