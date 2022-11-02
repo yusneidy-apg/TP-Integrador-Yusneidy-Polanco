@@ -10,8 +10,6 @@ import utilidad.ConexionBaseDeDatos;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static final Logger LOGGER = Logger.getLogger(Main.class);

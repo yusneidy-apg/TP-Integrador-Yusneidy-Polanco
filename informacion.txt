@@ -19,3 +19,6 @@ INFO    2022-11-02 14:37:42,979 [main] dao.implementacion_dao.OdontologoDaoImpH2
 INFO    2022-11-02 14:39:24,805 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
 INFO    2022-11-02 14:39:24,812 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
 INFO    2022-11-02 14:39:24,813 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
+INFO    2022-11-02 15:04:17,324 [main] dao.implementacion_dao.PacienteDaoImplH2  - ¡Paciente creado con exito!
+INFO    2022-11-02 15:04:17,329 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
+INFO    2022-11-02 15:04:17,329 [main] dao.implementacion_dao.OdontologoDaoImpH2  - ¡Odontologo creado con exito!
