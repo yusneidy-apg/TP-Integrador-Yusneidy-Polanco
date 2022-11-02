@@ -69,13 +69,30 @@ public class OdontologoDaoImpH2 implements IOdontologoDao {
     }
 
     @Override
-    public void modificar(int id) {
+    public void modificar(Odontologo odontologo) {
+        try (PreparedStatement stmt = getConexcion().prepareStatement("UPDATE odontologo set nombre = ?, apellido = ?, matricula = ? where idOdontologo = ?")){
+            stmt.setString(1, odontologo.getNombre());
+            stmt.setString(2, odontologo.getApellido());
+            stmt.setString(3, odontologo.getMatricula());
+            stmt.setInt(4, odontologo.getIdOdontologo());
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
 
+        LOGGER.info("¡Odontologo actualizado con exito!");
     }
 
     @Override
     public void eliminar(int id) {
+        try (PreparedStatement stmt = getConexcion().prepareStatement("DELETED FROM odontologo WHERE idOdontologo = ?")){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
 
+        LOGGER.info("¡Odontólogo eliminado con éxito!");
     }
 }
 

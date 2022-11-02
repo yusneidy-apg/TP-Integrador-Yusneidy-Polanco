@@ -11,7 +11,7 @@ public interface IOdontologoDao {
 
     List<Odontologo> listar();
 
-    void modificar(int id);
+    void modificar(Odontologo odontologo);
 
     void eliminar(int id);
 }
