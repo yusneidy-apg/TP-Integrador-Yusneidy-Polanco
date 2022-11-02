@@ -27,7 +27,7 @@ public class Turno {
         this.idTurno = idTurno;
     }
 
-    public int getIdOdontologo() {
+    public String getIdOdontologo() {
         return idOdontologo;
     }
 
@@ -35,7 +35,7 @@ public class Turno {
         this.idOdontologo = idOdontologo;
     }
 
-    public int getIdPaciente() {
+    public String getIdPaciente() {
         return idPaciente;
     }
 
@@ -43,7 +43,7 @@ public class Turno {
         this.idPaciente = idPaciente;
     }
 
-    public LocalDateTime getFechaTurno() {
+    public String getFechaTurno() {
         return fechaTurno;
     }
 
