@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConexionBaseDeDatos {
 
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
-    private final static String DB_URL = "jdbc:h2:~/h2-database-farmacia";
+    private final static String DB_URL = "jdbc:h2:~/citas_medicas";
     private final static String DB_USER ="root";
     private final static String DB_PASSWORD = "";
     private static Connection connection;
