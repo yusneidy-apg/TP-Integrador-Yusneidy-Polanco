@@ -1,11 +1,14 @@
 package dao.implementacion_dao;
 
 import dao.IPacienteDao;
+import modelos.Odontologo;
 import modelos.Paciente;
 import org.apache.log4j.Logger;
 import utilidad.ConexionBaseDeDatos;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteDaoImplH2 implements IPacienteDao {
@@ -51,16 +54,57 @@ public class PacienteDaoImplH2 implements IPacienteDao {
 
     @Override
     public List<Paciente> listar() {
-        return null;
+        List<Paciente> pacientes = new ArrayList<>();
+
+        try(Statement stmt = getConexcion().createStatement()){
+            ResultSet rs = stmt.executeQuery("SELECT * FROM paciente");
+            while (rs.next()){
+                Paciente paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt(1));
+                paciente.setNombre(rs.getString(2));
+                paciente.setApellido(rs.getString(3));
+                paciente.setDomicilio(rs.getString(4));
+                paciente.setDni(rs.getString(5));
+                paciente.setFechaAlta(rs.getTimestamp(6).toLocalDateTime());
+                pacientes.add(paciente);
+            }
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return pacientes;
     }
 
     @Override
-    public void modificar(int id) {
+    public void modificar(Paciente paciente) {
 
+        try (PreparedStatement stmt = getConexcion().prepareStatement("UPDATE paciente set nombre = ?, apellido = ?, domicilio = ?, dni = ?, fechaAlta = ?,  where idPaciente = ?")){
+            stmt.setString(1, paciente.getNombre());
+            stmt.setString(2, paciente.getApellido());
+            stmt.setString(3, paciente.getDomicilio());
+            stmt.setString(4, paciente.getDni());
+            stmt.setTimestamp(5, Timestamp.valueOf(paciente.getFechaAlta()));
+            stmt.setInt(6, paciente.getIdPaciente());
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        LOGGER.info("¡Paciente actualizado con exito!");
     }
 
     @Override
     public void eliminar(int id) {
+        try (PreparedStatement stmt = getConexcion().prepareStatement("DELETED FROM paciente WHERE idPaciente = ?")){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        LOGGER.info("¡Paciente eliminado con éxito!");
+
 
     }
 }

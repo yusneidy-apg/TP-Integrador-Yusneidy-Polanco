@@ -11,7 +11,7 @@ public interface IPacienteDao {
 
     List<Paciente> listar();
 
-    void modificar(int id);
+    void modificar(Paciente paciente);
 
     void eliminar(int id);
 }

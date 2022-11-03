@@ -12,7 +12,7 @@ public interface ITurnoDao {
 
     List<Turno> listar();
 
-    void modificar(int id);
+    void modificar(Turno turno);
 
     void eliminar(int id);
 }

@@ -1,11 +1,13 @@
 package dao.implementacion_dao;
 
 import dao.ITurnoDao;
+import modelos.Paciente;
 import modelos.Turno;
 import org.apache.log4j.Logger;
 import utilidad.ConexionBaseDeDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TurnoDaoImpH2 implements ITurnoDao {
@@ -45,16 +47,53 @@ public class TurnoDaoImpH2 implements ITurnoDao {
 
     @Override
     public List<Turno> listar() {
-        return null;
+
+        List<Turno> turnos = new ArrayList<>();
+
+        try(Statement stmt = getConexcion().createStatement()){
+            ResultSet rs = stmt.executeQuery("SELECT * FROM turno");
+            while (rs.next()){
+               Turno turno = new Turno();
+               turno.setIdPaciente(rs.getInt(1));
+               turno.setIdOdontologo(rs.getInt(2));
+               turno.setFechaTurno(rs.getTimestamp(3).toLocalDateTime());
+               turnos.add(turno);
+
+            }
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        return turnos;
+
     }
 
     @Override
-    public void modificar(int id) {
+    public void modificar(Turno turno) {
 
+        try (PreparedStatement stmt = getConexcion().prepareStatement("UPDATE turno set idPaciente = ?, idOdontologo= ?, fechaTurno = ?,  where idTurno = ?")){
+            stmt.setInt(1, turno.getIdPaciente());
+            stmt.setInt(2, turno.getIdOdontologo());
+            stmt.setTimestamp(3, Timestamp.valueOf(turno.getFechaTurno()));
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        LOGGER.info("¡Turno actualizado con exito!");
     }
 
     @Override
     public void eliminar(int id) {
 
+        try (PreparedStatement stmt = getConexcion().prepareStatement("DELETED FROM turno WHERE idTurno = ?")){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+        LOGGER.info("¡Turno eliminado con éxito!");
     }
 }
